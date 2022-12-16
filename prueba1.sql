@@ -25,5 +25,10 @@ insert into Sectores(nomsector) values ("Administracion"),("Construccion"),("Seg
 insert into Isapres(nomisapre) values ("Cruz Blanca"),("Consalud"),("Colmena");
 insert into Regiones(nomreg) values ("Arica"),("Metropolitana"),("Araucania");
 insert into Ciudades(nomciudad,idreg) values ("Putre",1),("Santiago",2),("Temuco",3);
-insert into Empleados(apepat,apemat,nombres,sueldo,fecha_nacim,direccion,idciudad,idsector,idafp,idisapre) values ("Alvarez","Elgueta","Felipe Ignacio",1000000,"1996-11-12","Maquehue 425",3,3,2,3),(),();
-select * from Regiones;
+insert into Empleados(apepat,apemat,nombres,sueldo,fecha_nacim,direccion,idciudad,idsector,idafp,idisapre) values ("Alvarez","Elgueta","Felipe Ignacio",1000000,"1996-11-12","Maquehue 425",3,3,2,3),
+("Bustos","Werner","Felipe Ignacio",1500000,"1996-11-07","Clemente Escobar 979",2,1,1,1),("Mansilla","Oyarzun","Javier Eduardo",1800000,"1997-07-23","Cristobal Colon 534",1,2,2,3);
+select avg(sueldo),sum(sueldo),max(sueldo) from Empleados;
+select nomciudad,nomreg from Ciudades,Regiones where Ciudades.idreg=Regiones.idreg;
+select valor,nomsector,fecha_nacim from AFP,Sectores,Empleados where AFP.idafp=Empleados.idafp and Sectores.idsector=Empleados.idsector order by valor desc;
+select * from Empleados where idafp in (2);
+select nomciudad,apepat,apemat from Ciudades,Empleados;
